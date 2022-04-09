@@ -2,6 +2,7 @@ writeCode
 
 Write code to:-
 
+
 - create a database named `sports`.
 - list all databases present in local mongod server.
 - create 3 collections named `cricket`, `football`, `TT` in sports databse.
