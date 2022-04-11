@@ -171,3 +171,146 @@ Insert above data into database to perform below queries:-
 - Update user with extra golf field in sports array whose name is "Steve Ortega".
 - Find all users who play either 'football' or 'cricket'.
 - Find all users whose name includes 'ri' in their name.
+
+
+```mongo
+Last login: Mon Apr 11 10:16:33 on console
+sakshamgarg@sakshams-MacBook-Pro ~ % mongo
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("07e941a1-3a22-4be2-ae0c-c7adb01d1a3b") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting: 
+        2022-04-11T10:17:18.249+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> sb
+uncaught exception: ReferenceError: sb is not defined :
+@(shell):1:1
+> db
+test
+> use blog
+switched to db blog
+> db.createCollection(articles);
+uncaught exception: ReferenceError: articles is not defined :
+@(shell):1:1
+>  db.createCollection('articles');
+{ "ok" : 1 }
+> var articles = [
+...     {
+...         _id: 'some_random_id2',
+...         title: 'Intro to nodejs',
+...         details: 'This is nodejs article',
+...         author: {
+...           name: 'author1',
+...           email: 'author1@gmail.com',
+...           age: '35'
+...         },
+...         tags: ['js', 'mongo']
+...       },
+...       {
+...         _id: 'some_random_id3',
+...         title: 'Intro to mongo',
+...         details: 'This is mongo article',
+...         author: {
+...           name: 'author2',
+...           email: 'author2@gmail.com',
+...           age: '34'
+...         },
+...         tags: ['js', 'mongo']
+...       },
+...       {
+...         _id: 'some_random_id4',
+...         title: 'Intro to xpress',
+...         details: 'This is xpress article',
+...         author: {
+...           name: 'author3',
+...           email: 'author3@gmail.com',
+...           age: '32'
+...         },
+...         tags: ['js', 'mongo']
+...       },
+...       {
+...         _id: 'some_random_id5',
+...         title: 'Intro to html',
+...         details: 'This is html article',
+...         author: {
+...           name: 'author5',
+...           email: 'author4@gmail.com',
+...           age: '23'
+...         },
+...         tags: ['js', 'mongo']
+...       }
+... 
+... ]
+> db.articles.insertMany(articles);
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		"some_random_id2",
+		"some_random_id3",
+		"some_random_id4",
+		"some_random_id5"
+	]
+}
+> show collections
+articles
+> db.articles.count
+function(query, options) {
+    const cmd =
+        Object.assign({count: this.getName(), query: this._massageObject(query || {})}, options);
+    if (cmd.readConcern) {
+        cmd.readConcern = {level: cmd.readConcern};
+    }
+    const res = this._db.runReadCommand(cmd);
+    if (!res.ok) {
+        throw _getErrorWithCode(res, "count failed: " + tojson(res));
+    }
+    return res.n;
+}
+> db.articles.count
+function(query, options) {
+    const cmd =
+        Object.assign({count: this.getName(), query: this._massageObject(query || {})}, options);
+    if (cmd.readConcern) {
+        cmd.readConcern = {level: cmd.readConcern};
+    }
+    const res = this._db.runReadCommand(cmd);
+    if (!res.ok) {
+        throw _getErrorWithCode(res, "count failed: " + tojson(res));
+    }
+    return res.n;
+}
+> db.articles.find().pretty
+function() {
+    this._prettyShell = true;
+    return this;
+}
+> db.article.find()
+> db.article.find()
+> db.articles.find()
+{ "_id" : "some_random_id2", "title" : "Intro to nodejs", "details" : "This is nodejs article", "author" : { "name" : "author1", "email" : "author1@gmail.com", "age" : "35" }, "tags" : [ "js", "mongo" ] }
+{ "_id" : "some_random_id3", "title" : "Intro to mongo", "details" : "This is mongo article", "author" : { "name" : "author2", "email" : "author2@gmail.com", "age" : "34" }, "tags" : [ "js", "mongo" ] }
+{ "_id" : "some_random_id4", "title" : "Intro to xpress", "details" : "This is xpress article", "author" : { "name" : "author3", "email" : "author3@gmail.com", "age" : "32" }, "tags" : [ "js", "mongo" ] }
+{ "_id" : "some_random_id5", "title" : "Intro to html", "details" : "This is html article", "author" : { "name" : "author5", "email" : "author4@gmail.com", "age" : "23" }, "tags" : [ "js", "mongo" ] }
+> 
+
+```
